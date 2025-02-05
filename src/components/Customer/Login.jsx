@@ -23,7 +23,7 @@ const Login = () => {
       const data = await loginCustomer(loginData); // Call the login API
 
       if (data.status === 200) {
-        toast.success(data.message); // Show success message
+        toast.success(data.message, { autoClose: 5000 });// Show success message
         // Store authentication flag in localStorage
         localStorage.setItem("isAuthenticated", true);
 

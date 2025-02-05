@@ -26,23 +26,21 @@ const RescheduleDelivery = () => {
       toast.error("Please fill in all required fields.");
       return;
     }
-
+  
     // Validate that the new date is not in the past
     const currentDate = new Date();
     const selectedDate = new Date(rescheduleData.newDate);
-
-    // Reset time for comparison
     currentDate.setHours(0, 0, 0, 0);
     selectedDate.setHours(0, 0, 0, 0);
-
+  
     if (selectedDate < currentDate) {
       toast.error("The new delivery date cannot be in the past.");
       return;
     }
-
+  
     try {
       await rescheduleDelivery(shipmentId, rescheduleData);
-      toast.success("Delivery rescheduled successfully!");
+      toast.success("Delivery rescheduled successfully! Email notification sent.");
     } catch (error) {
       toast.error("Failed to reschedule delivery.");
     }

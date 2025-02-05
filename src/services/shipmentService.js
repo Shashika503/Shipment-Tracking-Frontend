@@ -12,5 +12,9 @@ export const trackShipment = async (trackingId, customerId) => {
 
 // Reschedule Delivery
 export const rescheduleDelivery = async (shipmentId, data) => {
-  return axios.put(`${API_BASE}/shipments/${shipmentId}/reschedule`, data);
+  return axios.put(`${API_BASE}/shipments/${shipmentId}/reschedule`, data, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 };
