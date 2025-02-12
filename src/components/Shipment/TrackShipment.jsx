@@ -26,12 +26,12 @@ const TrackShipment = () => {
     }
     try {
       const response = await trackShipment(trackingId, customerId);
-      setShipment(response.data);
+      setShipment(response);
       setLastSearchedTrackingId(trackingId); // Store the last searched tracking ID
       toast.success("Shipment tracked successfully!");
     } catch (error) {
-      const errorMessage =
-        error.response?.data?.message || "Tracking ID Field is empty";
+      const errorMessage =  error.message || "Tracking ID not found.";
+       
       toast.error(errorMessage);
     }
   };
